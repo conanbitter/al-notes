@@ -4,7 +4,9 @@
   "description": "Backend for Geosmin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/main.ts",
+    "watch": "nodemon --watch src src/main.ts"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/conanbitter/geosmin/issues"
   },
-  "homepage": "https://github.com/conanbitter/geosmin#readme"
+  "homepage": "https://github.com/conanbitter/geosmin#readme",
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1"
+  }
 }

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "target": "ES2022",
+    "module": "NodeNext",
+    "lib": [
+      "es2023"
+    ],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "outDir": "../web",
+  }
+}
