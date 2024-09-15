@@ -24,3 +24,26 @@ export async function getNoteTree(noteId?: number): Promise<NoteTreeNode[]> {
         return []
     }
 }
+
+interface ErrorResult {
+    ok: 0;
+    error: string;
+}
+
+interface NoteResult {
+    ok: 1;
+    title: string;
+    content: string;
+}
+
+export async function getNoteContent(noteId: number): Promise<NoteResult | ErrorResult> {
+    const result = await db.selectFrom("notes").select(["title", "content"]).where("id", "==", noteId).executeTakeFirst();
+    return result ? {
+        ok: 1,
+        title: result.title,
+        content: result.content
+    } : {
+        ok: 0,
+        error: "Note not found"
+    };
+}

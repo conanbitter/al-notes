@@ -1,8 +1,8 @@
-import { fastify, FastifyInstance } from 'fastify'
+import fastify, { FastifyRequest } from 'fastify'
 import fastifyStatic from '@fastify/static'
 import path from 'node:path'
 
-import { getNoteTree } from './notes'
+import { getNoteTree, getNoteContent } from './notes'
 
 
 /*const creationDate = new Date().toISOString();
@@ -41,6 +41,10 @@ server.get('/favicon.ico', async (request, reply) => {
 server.get('/tree', async (request, reply) => {
     return await getNoteTree();
 })
+
+server.get<{ Params: { noteId: number } }>('/note/:noteId', async (request, reply) => {
+    return getNoteContent(request.params.noteId);
+});
 
 server.listen({ port: 8080 }, (err, address) => {
     if (err) {
