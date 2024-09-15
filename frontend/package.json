@@ -4,7 +4,9 @@
   "description": "Frontend for Geosmin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.mjs",
+    "check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/conanbitter/geosmin/issues"
   },
-  "homepage": "https://github.com/conanbitter/geosmin#readme"
+  "homepage": "https://github.com/conanbitter/geosmin#readme",
+  "devDependencies": {
+    "@types/alpinejs": "^3.13.10",
+    "esbuild": "0.23.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.1"
+  }
 }

@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="static/img/favicons/favicon512.png">
     <link rel="manifest" href="static/site.webmanifest">
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="static/js/bundle.js"></script>
 </head>
 
 <body>
@@ -19,22 +19,31 @@
     <div x-data="{
         notes: [],
         content:'',
+        currentId:0,
 
         async getNoteTree() {
             this.notes = await (await fetch('tree')).json();
+            console.log(this.notes);
         },
 
         async getNoteContent(id){
             const result=await (await fetch('note/'+id)).json();
             this.content = result.content;
-            //console.log(result);
+            this.currentId = result.id;
+            console.log(result);
+        },
+
+        async saveNote(){
+            //TODO
         }
     }" x-init="getNoteTree">
-        <template x-for="note in notes"></template>
-        <p><a x-text="note.title" href="#" @click="getNoteContent(note.id)"></a></p>
-        </template>
-        <div><textarea x-model="content" /></div>
-        <div x-text="content"></div>
+        <div>
+            <template x-for="note in notes">
+                <p><a x-text="note.title" href="#" @click="getNoteContent(note.id)"></a></p>
+            </template>
+        </div>
+        <div><textarea x-model="content"></textarea></div>
+        <button @click="saveNote">Save</button>
     </div>
 </body>
 
